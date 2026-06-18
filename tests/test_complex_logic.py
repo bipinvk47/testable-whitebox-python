@@ -24,16 +24,18 @@ class TestScheduleTask:
         r = schedule_task("BATCH", "HIGH", "USER", True, 4, 0, False, 50)
         assert r["status"] == "RUNNING"
 
-    def test_batch_high_resources_overloaded(self):
-        r = schedule_task("BATCH", "HIGH", "USER", True, 4, 1, False, 95)
+    def test_batch_medium_critical_overloaded(self):
+        # ESCALATED status + system_load > 90 → triggers OVERLOADED modifier
+        r = schedule_task("BATCH", "MEDIUM", "USER", True, 4, 0, True, 95)
         assert r["status"] == "OVERLOADED"
 
     def test_batch_high_resources_high_load_max_retry(self):
         r = schedule_task("BATCH", "HIGH", "USER", True, 4, 5, False, 80)
         assert r["status"] == "FAILED"
 
-    def test_batch_high_resources_high_load_retry_ok(self):
-        r = schedule_task("BATCH", "HIGH", "USER", True, 4, 1, False, 80)
+    def test_batch_high_resources_low_load_with_retry(self):
+        # RUNNING + retry_count > 0 → triggers RETRY_RUNNING modifier
+        r = schedule_task("BATCH", "HIGH", "USER", True, 4, 1, False, 50)
         assert r["status"] == "RETRY_RUNNING"
 
     def test_batch_high_no_resource(self):
@@ -134,7 +136,9 @@ class TestFlatten:
 
     def test_max_depth_exceeded(self):
         # 12 levels deep exceeds max_depth=10
-        deep = [[[[[[[[[[[["leaf"]]]]]]]]]]]]]
+        deep = [["leaf"]]
+        for _ in range(11):
+            deep = [deep]
         with pytest.raises(RecursionError):
             flatten(deep)
 

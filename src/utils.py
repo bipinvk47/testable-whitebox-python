@@ -95,10 +95,13 @@ def get_platform_info():
     return sys.platform, os.getcwd()
 
 
-# ── Wildcard import (F403) – in a sub-context ─────────────────────────────────
+# ── Wildcard import (F403) – intentional module-level, flagged by flake8 ─────
+# Placed at module level as Python requires; flake8 F403 will still fire.
+from math import *  # noqa: F401,F403,E402 – intentional wildcard import demo
+
+
 def load_math():
-    from math import *    # noqa: F401,F403  – intentional F403 for metric
-    return sqrt(9)        # noqa: F405
+    return sqrt(9)  # noqa: F405
 
 
 # ── Configuration file handling – Environment Standardization ────────────────
