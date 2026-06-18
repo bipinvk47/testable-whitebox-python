@@ -1,0 +1,25 @@
+[flake8]
+# Testable WhiteBox – flake8 configuration
+# Triggers: Violation Density per KLOC, Syntactic Uniformity Score,
+#           Structural Threshold Monitoring, Automated Gatekeeping
+
+max-line-length = 100
+max-complexity = 10
+
+# Extend ignore list ONLY for intentional violations in demo files
+extend-ignore =
+    # utils.py intentional violations are documented per-line with noqa
+    # auth.py security violations use per-line noqa
+
+per-file-ignores =
+    # Allow intentional security issues in SAST demo file
+    src/auth.py: S101,S301,S307,S324,S501,S602,S608,B105,B301,B303,B307,B501,B602,B608
+    # Allow intentional lint violations in lint demo file
+    src/utils.py: F401,F403,F405,N802,E501,W0612,E302
+
+format = default
+statistics = true
+count = true
+
+# Output for CI/CD quality gate
+output-file = reports/flake8-report.txt

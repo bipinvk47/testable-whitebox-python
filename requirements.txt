@@ -1,0 +1,98 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# Testable WhiteBox Python — Requirements
+# Maps to all 103 white-box metrics defined in Testable_Metrics_Tools_Versions_v2.xlsx
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ─── Test Runner ────────────────────────────────────────────────────────────
+pytest==8.3.5
+
+# ─── Cyclomatic Complexity (L3: Cyclomatic Complexity) ──────────────────────
+# Tool: Crosshair — formal property-based checker; emits McCabe CC
+crosshair-tool==0.0.107
+# Tool: McCabe — direct CC measurement
+mccabe==0.7.0
+# Tool: Radon/Lizard — maintainability index + CC
+radon==6.0.1
+lizard==1.17.10
+
+# ─── Decision & Condition Coverage (L3: Cyclomatic Complexity) ──────────────
+# Tool: Coverage.py — statement, branch, path coverage
+coverage==7.14.1
+pytest-cov==6.1.0
+# Tool: pymcdc — MC/DC condition coverage
+pymcdc==0.2.5
+
+# ─── Test Selection / QA Resource Allocation ────────────────────────────────
+# Tool: pytest-testmon — only re-runs tests affected by code changes
+pytest-testmon==2.2.0
+
+# ─── Cognitive Complexity (L3: Cognitive Complexity) ────────────────────────
+# radon already installed above (radon cc --show-complexity)
+# cognitive-ast — AST-based cognitive complexity calculation
+cognitive-complexity==1.3.0
+
+# ─── Code Duplication (L3: Code Duplication) ────────────────────────────────
+# Tool: jscpd — cross-language clone detection (installed via npm, see scripts)
+# Tool: copydetect — Python-native token-based duplicate detector
+copydetect==0.4.2
+
+# ─── Lint / Rule Violations (L3: Lint / Rule Violations) ────────────────────
+# Tool: pylint — comprehensive Python linter
+pylint==4.0.6
+# Tool: flake8 — PEP8 + pyflakes + McCabe plugin
+flake8==7.2.0
+flake8-bugbear==24.12.12
+flake8-bandit==4.1.1
+pep8-naming==0.14.1
+
+# ─── SAST / Security (L3: Static Vulnerabilities) ───────────────────────────
+# Tool: Bandit — Python SAST scanner
+bandit==1.8.3
+# Tool: Semgrep — polyglot SAST (installed separately, see scripts)
+semgrep==1.112.0
+
+# ─── Dependency / SCA (L3: Dependency Risk) ─────────────────────────────────
+# Tool: pip-audit — CVE scanning for Python packages
+pip-audit==2.10.1
+# Tool: safety — known vulnerability database check
+safety==3.5.1
+# Tool: pip-licenses — license compliance
+pip-licenses==5.0.0
+
+# ─── Mutation Testing (L3: Mutation Score) ──────────────────────────────────
+# Tool: mutmut — mutation testing for Python
+mutmut==3.3.0
+# Tool: cosmic-ray — alternative mutation tester
+cosmic-ray==8.4.6
+
+# ─── Data Flow Testing (L3: All Defs / All Uses Coverage) ───────────────────
+# Tool: Beniget — Python AST def-use chain analyzer
+beniget==0.5.0
+# Tool: pyflakes — fast static analysis (unused defs, undefined names)
+pyflakes==3.3.2
+
+# ─── Coverage Delta / Regression Analysis ───────────────────────────────────
+# coverage.py already installed above
+# diff-cover — compares coverage between commits (CI/CD delta)
+diff-cover==9.2.4
+
+# ─── Code Churn / Development Process (L3: Code Churn) ─────────────────────
+# Tool: pydriller — git mining for code churn metrics
+pydriller==2.9
+
+# ─── Path Coverage (AST-based path extraction) ──────────────────────────────
+# coverage.py + standard ast module (stdlib, no extra install)
+ast-path==0.1.0
+
+# ─── Additional Quality Tools ────────────────────────────────────────────────
+# Type checking (for Null/Boundary flow via CrossHair integration)
+mypy==1.15.0
+
+# ─── Intentionally OLDER packages (trigger pip-audit / safety CVE findings) ──
+# These are pinned to older versions to produce Known CVE Count metrics.
+# WARNING: Do NOT use these in production.
+requests==2.25.1          # CVE-2023-32681 (older versions)
+urllib3==1.26.4            # multiple CVEs
+cryptography==3.4.7        # CVE-2023-23931 and others
+Pillow==8.2.0              # multiple CVEs
+PyYAML==5.3.1              # CVE-2020-14343

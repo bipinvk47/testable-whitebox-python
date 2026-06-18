@@ -1,0 +1,51 @@
+[MASTER]
+# Testable WhiteBox – pylint configuration
+# Triggers: all Lint / Rule Violations metrics (metrics 21–32)
+
+jobs = 1
+suggestion-mode = yes
+unsafe-load-any-extension = no
+
+[MESSAGES CONTROL]
+# Enable all checkers so violation density per KLOC is maximised in demo
+enable = all
+
+# Only disable checkers that would hide intentional demonstrations
+disable =
+    # These are expected in test files
+    missing-module-docstring,
+    # Allow wildcard in utils demo
+    wildcard-import,
+    unused-wildcard-import,
+
+[FORMAT]
+max-line-length = 100
+indent-string = "    "
+
+[DESIGN]
+# Lower thresholds to trigger "too-many-branches" on complex_logic.py
+max-args = 10
+max-attributes = 10
+max-bool-expr = 5
+max-branches = 12
+max-locals = 15
+max-returns = 6
+max-statements = 50
+min-public-methods = 0
+
+[BASIC]
+# Naming conventions (triggers C0103 on calc(), getUserName())
+good-names = i,j,k,ex,Run,_
+bad-names = l,O,I
+
+[REPORTS]
+output-format = json
+reports = yes
+score = yes
+
+[SIMILARITIES]
+# Triggers duplicate-code checker (R0801)
+min-similarity-lines = 10
+ignore-comments = yes
+ignore-docstrings = yes
+ignore-imports = no

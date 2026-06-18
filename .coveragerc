@@ -1,0 +1,20 @@
+[run]
+branch = true
+source = src
+omit =
+    tests/*
+    */__init__.py
+
+[report]
+show_missing = true
+precision = 2
+skip_covered = false
+
+# Fail if coverage drops below threshold
+fail_under = 70
+
+[html]
+directory = reports/htmlcov
+
+[xml]
+output = reports/coverage.xml

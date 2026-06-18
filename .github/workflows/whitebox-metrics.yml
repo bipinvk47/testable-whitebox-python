@@ -1,0 +1,159 @@
+name: Testable WhiteBox Metrics CI
+
+on:
+  push:
+    branches: [main, develop, "feature/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  whitebox-metrics:
+    name: "Run All 103 WhiteBox Metrics"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # needed for pydriller churn + diff-cover delta
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install all metric tools
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up Node.js (for jscpd)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install jscpd (Code Duplication)
+        run: npm install -g jscpd
+
+      # ── Cyclomatic Complexity ─────────────────────────────────────────────
+      - name: "[CC] Radon Cyclomatic Complexity"
+        run: |
+          mkdir -p reports
+          radon cc src -s -a --json > reports/radon_cc.json
+          radon mi src -s --json   > reports/radon_mi.json
+          radon hal src --json     > reports/radon_hal.json
+
+      - name: "[CC] Lizard"
+        run: lizard src -l python --csv -o reports/lizard_cc.csv || true
+
+      - name: "[CC] McCabe via flake8"
+        run: |
+          python -m flake8 --max-complexity=10 --select=C9 src \
+            > reports/mccabe_violations.txt 2>&1 || true
+
+      - name: "[CC] CrossHair formal check"
+        run: crosshair check src/calculator.py src/complex_logic.py \
+          > reports/crosshair.txt 2>&1 || true
+
+      # ── Code Duplication ──────────────────────────────────────────────────
+      - name: "[DUP] copydetect"
+        run: copydetect -t src -o reports/copydetect_report.json || true
+
+      - name: "[DUP] jscpd"
+        run: npx jscpd src --languages python --reporters json \
+          --output reports/jscpd || true
+
+      # ── Lint / Rule Violations ────────────────────────────────────────────
+      - name: "[LINT] pylint"
+        run: python -m pylint src --rcfile=.pylintrc \
+          --output-format=json > reports/pylint_report.json 2>&1 || true
+
+      - name: "[LINT] flake8"
+        run: python -m flake8 src --config=.flake8 \
+          --format=json > reports/flake8_report.json 2>&1 || true
+
+      # ── SAST ─────────────────────────────────────────────────────────────
+      - name: "[SAST] Bandit"
+        run: python -m bandit -r src -f json -o reports/bandit_report.json || true
+
+      - name: "[SAST] Semgrep"
+        run: |
+          pip install semgrep --quiet
+          semgrep --config auto --config .semgrep.yml src \
+            --json > reports/semgrep_report.json 2>&1 || true
+
+      # ── Dependency Risk ───────────────────────────────────────────────────
+      - name: "[SCA] pip-audit CVE scan"
+        run: pip-audit --requirement requirements.txt \
+          --format json --output reports/pip_audit_report.json || true
+
+      - name: "[SCA] safety check"
+        run: safety check --file requirements.txt --json \
+          > reports/safety_report.json 2>&1 || true
+
+      - name: "[SCA] pip-licenses"
+        run: pip-licenses --format=json \
+          --output-file=reports/licenses.json || true
+
+      # ── Coverage (Statement + Branch) ─────────────────────────────────────
+      - name: "[COV] pytest + coverage"
+        run: |
+          python -m pytest tests/ \
+            --cov=src --cov-branch \
+            --cov-report=xml:reports/coverage.xml \
+            --cov-report=html:reports/htmlcov \
+            --cov-report=term-missing \
+            -v | tee reports/pytest_output.txt
+
+      # ── Mutation Testing ──────────────────────────────────────────────────
+      - name: "[MUT] mutmut"
+        run: |
+          mutmut run --paths-to-mutate src/ > reports/mutmut_output.txt 2>&1 || true
+          mutmut results >> reports/mutmut_output.txt 2>&1 || true
+
+      # ── Data Flow ─────────────────────────────────────────────────────────
+      - name: "[DF] pyflakes"
+        run: python -m pyflakes src > reports/pyflakes_report.txt 2>&1 || true
+
+      - name: "[DF] Beniget def-use chains"
+        run: |
+          python scripts/run_beniget.py > reports/beniget_defuse.json 2>&1 || true
+
+      # ── Coverage Delta ────────────────────────────────────────────────────
+      - name: "[DELTA] diff-cover"
+        run: diff-cover reports/coverage.xml \
+          --diff-range-notation .. --compare-branch=origin/main \
+          > reports/diff_cover.txt 2>&1 || true
+
+      # ── Code Churn ────────────────────────────────────────────────────────
+      - name: "[CHURN] pydriller"
+        run: python scripts/run_churn.py > reports/pydriller_churn.json || true
+
+      # ── MC/DC Condition Coverage ──────────────────────────────────────────
+      - name: "[COND] pymcdc MC/DC"
+        run: python -m pymcdc src/calculator.py src/complex_logic.py \
+          > reports/pymcdc_report.txt 2>&1 || true
+
+      # ── Test Selection ────────────────────────────────────────────────────
+      - name: "[SEL] pytest-testmon"
+        run: python -m pytest tests/ --testmon --testmon-forceselect \
+          --tb=no -q > reports/testmon_output.txt 2>&1 || true
+
+      # ── Upload all reports ────────────────────────────────────────────────
+      - name: Upload metric reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: whitebox-metric-reports
+          path: reports/
+          retention-days: 30
+
+      - name: Upload coverage HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-html
+          path: reports/htmlcov/
+          retention-days: 14

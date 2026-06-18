@@ -1,0 +1,21 @@
+# Testable WhiteBox – Semgrep ruleset selector
+# Triggers: Best Practice Compliance, Supply Chain Security, Regulatory Alignment
+
+rules:
+  # OWASP Top-10 rules
+  - id: python.lang.security.audit.dangerous-system-call
+    patterns:
+      - pattern: os.system(...)
+    message: "Use of os.system() detected"
+    languages: [python]
+    severity: ERROR
+
+  - id: python.lang.security.audit.hardcoded-password
+    patterns:
+      - pattern: $VAR = "..."
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: (?i)(password|passwd|secret|token|api_key)
+    message: "Possible hardcoded credential"
+    languages: [python]
+    severity: WARNING
