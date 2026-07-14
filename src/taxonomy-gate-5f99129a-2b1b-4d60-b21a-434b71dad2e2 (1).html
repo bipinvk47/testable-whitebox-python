@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Taxonomy gate report · 5f99129a-2b1b-4d60-b21a-434b71dad2e2</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 24px; color: #1a1a1a; background: #fafaf9; }
+    h1 { font-size: 1.25rem; margin-bottom: 8px; }
+    .sub { color: #57534e; font-size: 12px; margin-bottom: 24px; }
+    h2 { font-size: 1rem; margin-top: 28px; border-bottom: 1px solid #e7e5e4; padding-bottom: 6px; }
+    h3 { font-size: 13px; margin-top: 16px; color: #44403c; }
+    h4 { font-size: 12px; margin-top: 12px; color: #57534e; }
+    .meta { font-size: 12px; color: #78716c; margin: 4px 0 12px; }
+    table.sum { border-collapse: collapse; margin-bottom: 8px; font-size: 13px; }
+    table.sum th, table.sum td { border: 1px solid #e7e5e4; padding: 8px 12px; text-align: left; }
+    table.sum th { background: #f5f5f4; width: 200px; }
+    table.grid { border-collapse: collapse; width: 100%; font-size: 12px; margin-bottom: 16px; background: #fff; }
+    table.grid th, table.grid td { border: 1px solid #e7e5e4; padding: 8px 10px; vertical-align: top; }
+    table.grid th { background: #fafafa; text-align: left; font-weight: 600; color: #57534e; }
+    table.grid td.classification-cell { max-width: 340px; }
+    table.grid td.value-cell { font-variant-numeric: tabular-nums; }
+    table.grid td:last-child { font-variant-numeric: tabular-nums; font-family: ui-monospace, monospace; }
+    .cls-name { font-weight: 600; margin-bottom: 6px; }
+    .metric-formula { font-size: 10px; color: #44403c; margin: 0 0 8px 0; line-height: 1.45; }
+    .evidence-note { font-size: 10px; color: #78716c; margin: 0 0 6px 0; line-height: 1.35; }
+    .evidence-note code { font-size: 10px; background: #f5f5f4; padding: 0 4px; border-radius: 3px; }
+    ul.evidence { margin: 0; padding-left: 18px; font-size: 11px; color: #44403c; font-family: ui-monospace, monospace; line-height: 1.45; }
+    ul.evidence li { margin: 2px 0; }
+    .ev-path { word-break: break-all; }
+    td.result-em { text-align: center; }
+    .rp {
+      display: inline-flex;
+      min-width: 3.25rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+      border: 1px solid #e7e5e4;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .rp-pass { border-color: #6ee7b7; background: #ecfdf5; color: #065f46; }
+    .rp-fail { border-color: #fca5a5; background: #fef2f2; color: #991b1b; }
+    .rp-warn { border-color: #fcd34d; background: #fffbeb; color: #92400e; }
+    .rp-na { border-color: #d6d3d1; background: #fafaf9; color: #57534e; }
+    .exec-loading { display: inline-flex; align-items: center; justify-content: center; min-width: 3.25rem; min-height: 28px; vertical-align: middle; }
+    .exec-spin {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #e7e5e4;
+      border-top-color: #57534e;
+      border-radius: 50%;
+      animation: exec-spin-kf 0.75s linear infinite;
+    }
+    @keyframes exec-spin-kf { to { transform: rotate(360deg); } }
+    .exec-tick { font-weight: 700; font-size: 14px; color: #44403c; }
+    .exec-fail { font-weight: 700; font-size: 14px; color: #b91c1c; }
+    .exec-na { font-weight: 600; font-size: 14px; color: #78716c; }
+    .value-cell .sub { color: #57534e; font-size: 11px; font-weight: normal; display: inline-block; margin-top: 4px; line-height: 1.35; }
+    .syn { color: #b45309; font-size: 10px; vertical-align: super; }
+    .err-note { color: #991b1b; font-size: 10px; line-height: 1.35; display: inline-block; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Taxonomy gate report</h1>
+  <p class="sub">Generated 2026-07-13T13:17:04.537Z · Same formatting as the Confidence Engine taxonomy view.</p>
+  
+    <table class="sum">
+      <tr><th>Run ID</th><td>5f99129a-2b1b-4d60-b21a-434b71dad2e2</td></tr>
+      <tr><th>Repo name</th><td>click</td></tr>
+      <tr><th>Branch name</th><td>main</td></tr>
+      <tr><th>Commit ID</th><td>b67832c2167e5b0ff6764a8c04a0a9087e697b5a</td></tr>
+      <tr><th>Run status</th><td>Completed</td></tr>
+      <tr><th>Gate status</th><td>Completed</td></tr>
+      <tr><th>Pipeline gate</th><td>54</td></tr>
+      <tr><th>Whitebox confidence (weighted)</th><td>51</td></tr>
+      <tr><th>Whitebox confidence (unweighted)</th><td>54</td></tr>
+      <tr><th>Blackbox confidence</th><td>—</td></tr>
+      
+    </table>
+  <h2>Code Quality Auditing</h2><p class="meta">Testing type score: 88/100</p><h3>Code Duplication</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Defect Propagation Risk Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>80/100</strong><br/><span class="sub">≤ 5</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>80%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Refactoring Identification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>52/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-warn">WARN</span></td>
+      <td>52%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Quality Assessment</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 90</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Maintenance Reduction</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 90</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Refactoring Opportunity Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>95/100</strong><br/><span class="sub">≤ 15</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>95%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Risk-Based Testing Prioritization</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>99/100</strong><br/><span class="sub">≤ 8</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>99%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Maintainability Testing</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>92/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>92%</td>
+    </tr></tbody></table><h2>Control Flow Testing</h2><p class="meta">Testing type score: 27/100</p><h3>Branch Coverage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Conditional Logic Testing</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Control Flow Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Loop Condition Testing</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Edge Case Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Logic Error Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Case Completeness</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Decision Outcome Verification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h3>Path Coverage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Path Execution Tracking</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Complete Coverage Path Verification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Partial Path Coverage Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Nested Condition Path Testing</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 40</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Loop Path Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Unreachable Path Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Exception Path Handling</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Multi-Function Path Tracking</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">CI/CD Integration Test</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Path Detection Testing</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h3>Statement Coverage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Unit Testing Support</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 5</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Dead Code Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Completeness Evaluation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Basic Logic Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Execution Verification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h2>Data Flow Testing</h2><p class="meta">Testing type score: 25/100</p><h3>All Definition Coverage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Variable Definition Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Definition-Use Mapping</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Coverage Measurement</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Uncovered Definition Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Edge Case Handling</div>
+    
+    <ul class="evidence"><li><span class="ev-path">docs/conf.py</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Reporting Validation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 90</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>All Uses Coverage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Computational Use Detection (C-Use)</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Predicate Use Detection (P-Use)</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Definition-Use Pair Identification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">All-Uses Coverage Verification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Partial Uses Coverage Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Multiple Definitions Handling</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Cross-Function Use Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Unreachable Use Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Coverage Reporting Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Variable Use Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h2>Development Process Analysis</h2><p class="meta">Testing type score: 80/100</p><h3>Code Churn</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Risk-Based Testing Prioritization</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py</span> — line 8700</li><li><span class="ev-path">tests/test_options.py</span> — line 4747</li><li><span class="ev-path">src/click/types.py</span> — line 2656</li><li><span class="ev-path">tests/test_termui.py</span> — line 2026</li><li><span class="ev-path">tests/test_utils.py</span> — line 1951</li><li><span class="ev-path">src/click/_termui_impl.py</span> — line 1908</li><li><span class="ev-path">src/click/termui.py</span> — line 1496</li><li><span class="ev-path">src/click/decorators.py</span> — line 1389</li><li><span class="ev-path">src/click/testing.py</span> — line 1362</li><li><span class="ev-path">src/click/shell_completion.py</span> — line 1216</li><li><span class="ev-path">tests/test_basic.py</span> — line 1208</li><li><span class="ev-path">src/click/utils.py</span> — line 1112</li><li><span class="ev-path">src/click/_compat.py</span> — line 1086</li><li><span class="ev-path">src/click/parser.py</span> — line 933</li><li><span class="ev-path">tests/test_arguments.py</span> — line 913</li><li><span class="ev-path">tests/test_shell_completion.py</span> — line 893</li><li><span class="ev-path">tests/test_testing.py</span> — line 884</li><li><span class="ev-path">tests/test_commands.py</span> — line 818</li><li><span class="ev-path">tests/test_context.py</span> — line 782</li><li><span class="ev-path">tests/test_formatting.py</span> — line 636</li><li><span class="ev-path">src/click/exceptions.py</span> — line 594</li><li><span class="ev-path">tests/test_defaults.py</span> — line 587</li><li><span class="ev-path">tests/test_stream_lifecycle.py</span> — line 542</li><li><span class="ev-path">tests/test_utils_2/test_echo_via_pager.py</span> — line 518</li><li><span class="ev-path">tests/test_types.py</span> — line 448</li><li><span class="ev-path">src/click/_winconsole.py</span> — line 445</li><li><span class="ev-path">src/click/formatting.py</span> — line 438</li><li><span class="ev-path">tests/test_utils_2/test_echo.py</span> — line 352</li><li><span class="ev-path">tests/test_chain.py</span> — line 331</li><li><span class="ev-path">src/click/__init__.py</span> — line 328</li><li><span class="ev-path">tests/test_info_dict.py</span> — line 323</li><li><span class="ev-path">examples/imagepipe/imagepipe.py</span> — line 290</li><li><span class="ev-path">tests/test_compat.py</span> — line 274</li><li><span class="ev-path">tests/test_utils/test_echo_via_pager.py</span> — line 259</li><li><span class="ev-path">tests/test_utils_2/test_open_file.py</span> — line 244</li><li><span class="ev-path">src/click/_unicodefun.py</span> — line 226</li><li><span class="ev-path">src/click/_textwrap.py</span> — line 206</li><li><span class="ev-path">tests/test_utils/test_echo.py</span> — line 194</li><li><span class="ev-path">examples/termui/termui.py</span> — line 171</li><li><span class="ev-path">examples/repo/repo.py</span> — line 168</li><li><span class="ev-path">tests/test_utils_2/test_prompt.py</span> — line 148</li><li><span class="ev-path">examples/aliases/aliases.py</span> — line 145</li><li><span class="ev-path">tests/test_utils/test_style.py</span> — line 129</li><li><span class="ev-path">tests/test_utils/test_open_file.py</span> — line 122</li><li><span class="ev-path">src/click/globals.py</span> — line 120</li><li><span class="ev-path">tests/test_imports.py</span> — line 117</li><li><span class="ev-path">tests/test_custom_classes.py</span> — line 112</li><li><span class="ev-path">docs/conf.py</span> — line 111</li><li><span class="ev-path">tests/test_utils_2/test_style.py</span> — line 106</li><li><span class="ev-path">tests/test_utils_2/test_sentinel.py</span> — line 104</li><li><span class="ev-path">tests/test_utils_2/test_confirm.py</span> — line 98</li><li><span class="ev-path">tests/test_command_decorators.py</span> — line 92</li><li><span class="ev-path">tests/conftest.py</span> — line 82</li><li><span class="ev-path">tests/test_normalization.py</span> — line 78</li><li><span class="ev-path">tests/test_utils/test_prompt.py</span> — line 74</li><li><span class="ev-path">examples/naval/naval.py</span> — line 72</li><li><span class="ev-path">examples/complex/complex/cli.py</span> — line 62</li><li><span class="ev-path">examples/completion/completion.py</span> — line 58</li><li><span class="ev-path">examples/validation/validation.py</span> — line 52</li><li><span class="ev-path">tests/test_utils/test_sentinel.py</span> — line 52</li><li><span class="ev-path">tests/test_testing_logging.py</span> — line 50</li><li><span class="ev-path">tests/test_utils/test_confirm.py</span> — line 49</li><li><span class="ev-path">tests/typing/typing_aliased_group.py</span> — line 49</li><li><span class="ev-path">src/click/_utils.py</span> — line 46</li><li><span class="ev-path">tests/test_parser.py</span> — line 40</li><li><span class="ev-path">examples/colors/colors.py</span> — line 39</li><li><span class="ev-path">tests/test_utils/test_make_default_short_help.py</span> — line 39</li><li><span class="ev-path">examples/inout/inout.py</span> — line 30</li><li><span class="ev-path">setup.py</span> — line 29</li><li><span class="ev-path">tests/test_utils/test__detect_program_name.py</span> — line 27</li><li><span class="ev-path">examples/aliases/setup.py</span> — line 26</li><li><span class="ev-path">examples/colors/setup.py</span> — line 26</li><li><span class="ev-path">examples/completion/setup.py</span> — line 26</li><li><span class="ev-path">examples/complex/setup.py</span> — line 26</li><li><span class="ev-path">examples/imagepipe/setup.py</span> — line 26</li><li><span class="ev-path">examples/inout/setup.py</span> — line 26</li><li><span class="ev-path">examples/naval/setup.py</span> — line 26</li><li><span class="ev-path">examples/repo/setup.py</span> — line 26</li><li><span class="ev-path">examples/termui/setup.py</span> — line 26</li><li><span class="ev-path">examples/validation/setup.py</span> — line 26</li><li><span class="ev-path">tests/typing/typing_progressbar.py</span> — line 24</li><li><span class="ev-path">tests/test_utils_2/test_LazyFile.py</span> — line 22</li><li><span class="ev-path">tests/test_utils_2/test_KeepOpenFile.py</span> — line 20</li><li><span class="ev-path">tests/typing/typing_options.py</span> — line 19</li><li><span class="ev-path">tests/typing/typing_version_option.py</span> — line 19</li><li><span class="ev-path">tests/test_utils_2/test_format_filename.py</span> — line 18</li><li><span class="ev-path">tests/typing/typing_simple_example.py</span> — line 18</li><li><span class="ev-path">tests/test_utils/test__expand_args.py</span> — line 17</li><li><span class="ev-path">tests/typing/typing_confirmation_option.py</span> — line 17</li><li><span class="ev-path">tests/typing/typing_password_option.py</span> — line 14</li><li><span class="ev-path">examples/complex/complex/commands/cmd_init.py</span> — line 13</li><li><span class="ev-path">tests/typing/typing_help_option.py</span> — line 13</li><li><span class="ev-path">examples/complex/complex/commands/cmd_status.py</span> — line 11</li><li><span class="ev-path">tests/test_utils/test_LazyFile.py</span> — line 11</li><li><span class="ev-path">tests/typing/typing_group_kw_options.py</span> — line 11</li><li><span class="ev-path">tests/test_utils/test_KeepOpenFile.py</span> — line 10</li><li><span class="ev-path">tests/test_utils/test_format_filename.py</span> — line 9</li></ul></td>
+      <td class="value-cell"><strong>60/100</strong><br/><span class="sub">≤ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-warn">WARN</span></td>
+      <td>60%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Regression Testing Focus</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 40</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Defect Prediction</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 60</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Case Maintenance Identification</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Change Impact Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h2>FERPA/COPPA Compliance</h2><p class="meta">Testing type score: 50/100</p><h3>PII Logging Detection</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">PII in Log Statements</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Student PII Exposure Scan</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">PII in Codebase Detection</div>
+    
+    <ul class="evidence"><li><span class="ev-path">CHANGES.md</span> — line 561</li><li><span class="ev-path">CHANGES.md</span> — line 575</li><li><span class="ev-path">CHANGES.md</span> — line 576</li><li><span class="ev-path">CHANGES.md</span> — line 607</li><li><span class="ev-path">CHANGES.md</span> — line 614</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h2>IaC Security</h2><p class="meta">Testing type score: 100/100</p><h3>CIS Benchmark</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">CIS Compliance Gap</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Open Firewall Rules</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Open Network Access</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Public Storage Access</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Public Exposure Risk</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Unencrypted Storage</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Storage Encryption Gap</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h2>Mutation Testing</h2><p class="meta">Testing type score: 1/100</p><h3>Mutation Score</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Fault Detection Capability</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70%</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Coverage Quality Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70%</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Case Improvement Identification</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Edge Case Detection</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70%</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Regression Testing Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70%</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Logic Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70%</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Suite Effectiveness Evaluation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>1/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>1%</td>
+    </tr></tbody></table><h2>Performance Testing</h2><p class="meta">Testing type score: 88/100</p><h3>Static Analysis</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Complexity-Based Performance Risk</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">0.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Big-O Complexity Review</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">N+1 Query Pattern Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Memory Allocation Pattern Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Thread-Safety Pattern Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Dependency Analysis</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Unused Dependency Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Build Time Regression</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Circular Dependency Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">100.0 / 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Code Quality</h3><p class="meta">Testing type score: 0/100</p><h4>Technical Debt</h4><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Code Churn in Performance-Critical Paths</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 70</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h4>Test Coverage</h4><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Performance Test Code Coverage</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h2>Readability / Maintainability</h2><p class="meta">Testing type score: 91/100</p><h3>Cognitive Complexity</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Maintainability Evaluation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>82/100</strong><br/><span class="sub">≤ 15</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>82%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Testability Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>91/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>91%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Risk Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>93/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>93%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Refactoring Guidance</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>99/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>99%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Review Support</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>89/100</strong><br/><span class="sub">≤ 15</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>89%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Testing Effort Prioritization</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>99/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>99%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Understandability Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>82/100</strong><br/><span class="sub">≤ 15</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>82%</td>
+    </tr></tbody></table><h2>SOC 2 Compliance</h2><p class="meta">Testing type score: 33/100</p><h3>Access Control</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Privileged Access Audit</div>
+    
+    <p class="evidence-note">Planned tasks did not start — no metric recorded.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-na" title="Not Started" aria-label="Not Started">—</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h3>Change Management Testing</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Change Control Verification</div>
+    
+    <p class="evidence-note">Planned tasks did not start — no metric recorded.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-na" title="Not Started" aria-label="Not Started">—</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h3>Secret Management</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Secrets in Repo History</div>
+    
+    <p class="evidence-note">Planned tasks did not start — no metric recorded.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-na" title="Not Started" aria-label="Not Started">—</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h2>Security Testing</h2><p class="meta">Testing type score: 33/100</p><h3>Secret Detection</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Hardcoded Secret Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Pre-Commit Secret Prevention</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Secrets in Git History</div>
+    
+    <p class="evidence-note">Tool completed but emitted no evidence for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table><h2>Security White-box Testing</h2><p class="meta">Testing type score: 70/100</p><h3>Dependency Risk (SCA)</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Transitive Dependency Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 5</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">License Compliance Testing</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>6/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>6%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Supply Chain Security Analysis</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>6/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>6%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Dependency Health Monitoring</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>1/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>1%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Risk Prioritization</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>92/100</strong><br/><span class="sub">≤ 30</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>92%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Continuous Dependency Monitoring</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Vulnerability Dependency Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">6.00 (≤ 0)</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Outdated Dependency Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>88/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>88%</td>
+    </tr></tbody></table><h3>Static Vulnerabilities (SAST)</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Secure Coding Validation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 90</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Input Validation Testing</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/_termui_impl.py</span> — line 819</li><li><span class="ev-path">src/click/_termui_impl.py</span> — line 513</li><li><span class="ev-path">src/click/_termui_impl.py</span> — line 533</li><li><span class="ev-path">src/click/_termui_impl.py</span> — line 600</li><li><span class="ev-path">src/click/_termui_impl.py</span> — line 631</li></ul></td>
+      <td class="value-cell"><strong>58/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-warn">WARN</span></td>
+      <td>58%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Data Flow Security Analysis</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Authentication &amp; Authorization Weakness Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Dependency &amp; Library Vulnerability Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Compliance &amp; Security Standard Validation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Security Vulnerability Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 95</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h2>Static Code Analysis</h2><p class="meta">Testing type score: 61/100</p><h3>IaC Security Scanning</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Open Security Group Rule Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Unencrypted Storage Definition</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Publicly Exposed Resource Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">CIS Benchmark Compliance</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Lint / Rule Violations</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Rule Detection Test</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≤ 10</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Unused Variable Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Naming Convention Validation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Code Style Rule Validation</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Complexity Rule Detection</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>99/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>99%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Rule Severity Classification</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≤ 20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Multiple Violations Detection</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>20/100</strong><br/><span class="sub">≤ 50</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>20%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">False Positive Prevention</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Custom Rule Validation</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>5/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>5%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Configuration File Handling</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>1/100</strong><br/><span class="sub">≥ 100</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>1%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">CI/CD Integration Validation</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/core.py:2501</span> — line 1</li><li><span class="ev-path">src/click/core.py:2523</span> — line 1</li><li><span class="ev-path">src/click/core.py:2658</span> — line 1</li><li><span class="ev-path">src/click/core.py:2739</span> — line 1</li><li><span class="ev-path">src/click/core.py:2768</span> — line 1</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Violation Reporting Validation</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h3>Secret Detection</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Hardcoded Secret Scan</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Pre-Commit Secret Prevention</div>
+    
+    <ul class="evidence"><li><span class="ev-path">.pre-commit-config.yaml</span> — line 3</li><li><span class="ev-path">.pre-commit-config.yaml</span> — line 8</li><li><span class="ev-path">.pre-commit-config.yaml</span> — line 12</li><li><span class="ev-path">.pre-commit-config.yaml</span> — line 17</li></ul></td>
+      <td class="value-cell"><strong>60/100</strong><br/><span class="sub">≤ 1</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-warn">WARN</span></td>
+      <td>60%</td>
+    </tr></tbody></table><h2>Structural Analysis</h2><p class="meta">Testing type score: 83/100</p><h3>Cyclomatic Complexity</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Static Analysis Metric</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 28</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Decision Coverage</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 28</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Condition Coverage</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 28</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Logic Coverage Metric</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≥ 18</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Maintainability Analysis</div>
+    
+    <ul class="evidence"><li><span class="ev-path">src/click/_textwrap.py:extra_indent</span> — line 10</li><li><span class="ev-path">src/click/_textwrap.py:indent_only</span> — line 8</li><li><span class="ev-path">src/click/parser.py:_unpack_args._fetch</span> — line 8</li><li><span class="ev-path">src/click/parser.py:_unpack_args</span> — line 30</li><li><span class="ev-path">src/click/parser.py:_split_opt</span> — line 7</li></ul></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≤ 1.20</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Prioritization</div>
+    
+    <p class="evidence-note">No findings — check passed.</p></td>
+      <td class="value-cell"><strong>100/100</strong><br/><span class="sub">≤ 14</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-pass">PASS</span></td>
+      <td>100%</td>
+    </tr></tbody></table><h2>Test Regression/Coverage Analysis</h2><p class="meta">Testing type score: 0/100</p><h3>Coverage Delta</h3><table class="grid">
+    <thead><tr>
+      <th>Classification</th>
+      <th>Value</th>
+      <th>Execution status</th>
+      <th>Result</th>
+      <th>Coverage</th>
+    </tr></thead><tbody><tr>
+      <td class="classification-cell"><div class="cls-name">Regression Testing Monitoring</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">0.00</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Test Suite Effectiveness Tracking</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">0.00</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">CI/CD Quality Gate Enforcement</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Change Impact Analysis</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">0.00</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">New Code Testing Validation</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">0.00</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr><tr>
+      <td class="classification-cell"><div class="cls-name">Quality Improvement Measurement</div>
+    
+    <p class="evidence-note">Evidence not available for this classification.</p></td>
+      <td class="value-cell"><strong>0/100</strong><br/><span class="sub">≥ 80</span></td>
+      <td class="exec-pill"><span class="exec-tick" title="Execution completed" aria-label="Execution completed">✓</span></td>
+      <td class="result-em"><span class="rp rp-fail">FAIL</span></td>
+      <td>0%</td>
+    </tr></tbody></table>
+</body>
+</html>
