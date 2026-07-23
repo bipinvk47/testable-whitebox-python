@@ -7,6 +7,7 @@ Targets:
   - Branch coverage: every if/else
   - Statement coverage: 100%
   - Multi-function path tracking (get_config_value → _load_config → read_json_file)
+  - Check the flow for the testing.
 """
 import json
 import os
