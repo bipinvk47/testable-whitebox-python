@@ -2,7 +2,7 @@
 test_auth.py
 ============
 Tests exercise the auth module to produce coverage for SAST tools to scan.
-Bandit/Semgrep findings are static and do not require test execution —
+Bandit/Semgrep findings are static —
 but these tests ensure all SAST-flagged functions are *reachable* by
 coverage-guided scanners. applied the new changes to test the commit trigger and the changes for the recent webhook trigger test
 """
